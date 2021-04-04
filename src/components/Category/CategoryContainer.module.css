@@ -1,0 +1,48 @@
+@media only screen and (max-width: 600px) {
+  #categoryContainer {
+    display: flex;
+    margin-top: 10px;
+  }
+
+  #categoryContainer > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .button {
+    width: 100%;
+    border: none;
+  }
+
+  .thirdCategory {
+    width: 32%;
+  }
+
+  .button:hover {
+    background-color: #ddd;
+  }
+}
+
+#categoryContainer {
+  display: flex;
+  margin-top: 10px;
+}
+
+#categoryContainer > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.button {
+  width: 100%;
+  border: none;
+}
+
+.RetroCategory {
+  width: 32%;
+}
+
+.button:hover {
+  background-color: #ddd;
+}
