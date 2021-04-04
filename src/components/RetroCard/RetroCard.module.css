@@ -1,0 +1,39 @@
+.RetroCard {
+  background-color:  #962cdd;
+  margin-top:5px;
+  padding: 5px;
+}
+
+.textbox {
+  background-color: transparent;
+  width: 100%;
+  height: 2rem;
+  border: none;
+  resize: none;
+}
+
+.textbox:hover {
+  background: hsla(0, 0%, 100%, 0.2)
+    url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+PHBhdGggZD0iTTkgNS4zTDEwLjYgN2wtNC4xIDQuMS0xLjYtMS42TDkgNS4zem0yLjgtLjNsLS43LS43Yy0uMy0uMy0uNy0uMy0xIDBsLS43LjZMMTEgNi42bC44LS44Yy4zLS4zLjMtLjYgMC0uOHpNNCAxMS44YzAgLjEuMS4yLjIuMmwxLjgtLjUtMS42LTEuNi0uNCAxLjl6IiBmaWxsPSIjZmZmIi8+PC9zdmc+")
+    100% 0/27px no-repeat;
+  cursor: pointer;
+}
+
+.textbox:focus-within {
+  background-color: white;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonContainer > * {
+  background: none;
+  border: none;
+  color: white;
+}
+
+.textboxButton:hover {
+  opacity: .5;
+}
