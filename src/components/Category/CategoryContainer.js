@@ -18,7 +18,7 @@ const CategoryContainer = () => {
             +
           </button>
           {state.wentWell &&
-            state.wentWell.map((object, index) => {
+            state.wentWell.map((_, index) => {
               return (
                 <RetroCard identify={index} category="wentWell" key={"wentWell-" + index} backGround="#019588">
                 </RetroCard>
@@ -34,7 +34,7 @@ const CategoryContainer = () => {
             +
           </button>
           {state.toImprove &&
-            state.toImprove.map((object, index) => {
+            state.toImprove.map((_, index) => {
               return (
                 <RetroCard
                   identify={index}
@@ -54,7 +54,7 @@ const CategoryContainer = () => {
             +
           </button>
           {state.actionItems &&
-            state.actionItems.map((object, index) => {
+            state.actionItems.map((_, index) => {
               return (
                 <RetroCard
                   identify={index}

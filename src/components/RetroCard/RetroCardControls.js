@@ -15,8 +15,19 @@ const RetroCardControls = () => {
     })
   }
   
-  const moveItem = (event, newCategory, category, cardIndex) => {
+  const moveItem = (direction, category, cardIndex) => {
+    switch (category) {
+      case "wentWell":
+        break;
+      case "toImprove":
+        break;
+      case "actionItems":
+        break;
+      default:
+        break;
+    }
 
+    
   }
 
   const deleteItem = (category, cardIndex) => {
