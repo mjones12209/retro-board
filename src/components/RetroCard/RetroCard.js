@@ -2,7 +2,7 @@ import styles from './RetroCard.module.css';
 import RetroCardControls from './RetroCardControls';
 
 const TextCard = ({backGround, children, category, identify}) => {
-    const {updateItem, deleteItem, moveLeft} = RetroCardControls();
+    const {updateItem, deleteItem, moveLeft, moveRight} = RetroCardControls();
 
     return (
       <>
@@ -11,9 +11,9 @@ const TextCard = ({backGround, children, category, identify}) => {
           {children}
           </textarea>
           <div className={styles["buttonContainer"]}>
-            <button className={styles["textboxButton"]} onClick={()=>moveLeft("left", category, identify)}>&lt;</button>
-            <button className={styles["textboxButton"]} onClick={(e)=>deleteItem(category, identify)}>{"x"}</button>
-            <button className={styles["textboxButton"]}>&gt;</button>
+            <button className={styles["textboxButton"]} onClick={()=>moveLeft(category, identify)}>&lt;</button>
+            <button className={styles["textboxButton"]} onClick={()=>deleteItem(category, identify)}>{"x"}</button>
+            <button className={styles["textboxButton"]} onClick={()=>moveRight(category, identify)}>&gt;</button>
           </div>
         </div>
       </>
