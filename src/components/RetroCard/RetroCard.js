@@ -11,7 +11,7 @@ const TextCard = ({backGround, children, category, identify}) => {
       <>
         <div className={styles["RetroCard"]} style={{backgroundColor: backGround}}>
           <textarea value={state[category][identify].textValue} className={styles["textbox"]} onChange={(e)=>{updateItem(e, category, identify)}}>
-          {children}
+          {/* {children} */}
           </textarea>
           <div className={styles["buttonContainer"]}>
             <button className={styles["textboxButton"]} onClick={()=>moveLeft(category, identify)}>&lt;</button>

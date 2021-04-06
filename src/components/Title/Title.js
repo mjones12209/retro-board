@@ -1,8 +1,9 @@
 import {Card} from 'react-bootstrap';
+import styles from './Title.module.css';
 
 const Title = ({children}) => {
     return (
-      <Card style={{ width: "100%" }}>
+      <Card id={styles['title']} style={{ width: "100%" }}>
         <Card.Body>
           <Card.Title>Retro Board</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">

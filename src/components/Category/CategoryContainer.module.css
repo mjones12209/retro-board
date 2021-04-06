@@ -1,20 +1,32 @@
 @media only screen and (max-width: 600px) {
   #categoryContainer {
     display: flex;
+    flex-direction: column;
     margin-top: 10px;
+  }
+
+  #categoryContainer > div > div > h2 {
+    font-size: unset;
   }
 
   #categoryContainer > div {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
   }
+
+  #categoryContainer > div > div {
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+  }
+
   .button {
     width: 100%;
     border: none;
   }
 
-  .thirdCategory {
+  .RetroCategory {
     width: 32%;
   }
 
@@ -23,26 +35,28 @@
   }
 }
 
-#categoryContainer {
-  display: flex;
-  margin-top: 10px;
-}
-
-#categoryContainer > div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.button {
-  width: 100%;
-  border: none;
-}
-
-.RetroCategory {
-  width: 32%;
-}
-
-.button:hover {
-  background-color: #ddd;
+@media only screen and (min-width: 601px) {
+  #categoryContainer {
+    display: flex;
+    margin-top: 10px;
+  }
+  
+  #categoryContainer > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .button {
+    width: 100%;
+    border: none;
+  }
+  
+  .RetroCategory {
+    width: 32%;
+  }
+  
+  .button:hover {
+    background-color: #ddd;
+  }
 }
