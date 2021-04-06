@@ -1,13 +1,16 @@
+import {useContext} from 'react';
 import styles from './RetroCard.module.css';
 import RetroCardControls from './RetroCardControls';
+import {StateContext} from '../../contexts/StateContext';
 
 const TextCard = ({backGround, children, category, identify}) => {
     const {updateItem, deleteItem, moveLeft, moveRight} = RetroCardControls();
+    const {state} = useContext(StateContext);
 
     return (
       <>
         <div className={styles["RetroCard"]} style={{backgroundColor: backGround}}>
-          <textarea className={styles["textbox"]} onChange={(e)=>{updateItem(e, category, identify)}}>
+          <textarea value={state[category][identify].textValue} className={styles["textbox"]} onChange={(e)=>{updateItem(e, category, identify)}}>
           {children}
           </textarea>
           <div className={styles["buttonContainer"]}>

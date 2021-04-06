@@ -7,6 +7,8 @@
 .textbox {
   background-color: transparent;
   width: 100%;
+  color: rgb(212, 212, 212);
+  font-weight: bold;
   height: 2rem;
   border: none;
   resize: none;

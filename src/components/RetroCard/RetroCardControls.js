@@ -6,6 +6,7 @@ const RetroCardControls = () => {
 
   const updateItem = (e, category, cardIndex) => {
     setState({
+      ...state,
       [category]: [
         ...state[category].slice(0, cardIndex),
         { textValue: e.target.value },
@@ -19,10 +20,9 @@ const RetroCardControls = () => {
       case "wentWell":
         break;
       case "toImprove":
-        //add to wentWell and remove from toImprove
         setState({
           ...state,
-          wentWell: [...state.wentWell, ...state[category].slice(cardIndex)],
+          wentWell: [...state.wentWell, state[category][cardIndex]],
           [category]: [
             ...state[category].filter((_, index) => index !== cardIndex),
           ],
@@ -31,7 +31,7 @@ const RetroCardControls = () => {
       case "actionItems":
         setState({
           ...state,
-          toImprove: [...state.toImprove, ...state[category].slice(cardIndex)],
+          toImprove: [...state.toImprove, state[category][cardIndex]],
           [category]: [
             ...state[category].filter((_, index) => index !== cardIndex),
           ],
@@ -45,33 +45,25 @@ const RetroCardControls = () => {
   const moveRight = (category, cardIndex) => {
     switch (category) {
       case "wentWell":
-                setState({
-                  ...state,
-                  toImprove: [
-                    ...state.toImprove,
-                    ...state[category].slice(cardIndex),
-                  ],
-                  [category]: [
-                    ...state[category].filter(
-                      (_, index) => index !== cardIndex
-                    ),
-                  ],
-                });
+        setState({
+          ...state,
+          toImprove: [...state.toImprove, state[category][cardIndex]],
+          [category]: [
+            ...state[category].filter((_, index) => index !== cardIndex),
+          ],
+        });
         break;
       case "toImprove":
-        //add to actionItems and remove from toImprove
-                     setState({
-                       ...state,
-                       actionItems: [
-                         ...state.actionItems,
-                         ...state[category].slice(cardIndex),
-                       ],
-                       [category]: [
-                         ...state[category].filter(
-                           (_, index) => index !== cardIndex
-                         ),
-                       ],
-                     });
+        setState({
+          ...state,
+          actionItems: [
+            ...state.actionItems,
+            state[category][cardIndex],
+          ],
+          [category]: [
+            ...state[category].filter((_, index) => index !== cardIndex),
+          ],
+        });
         break;
       case "actionItems":
         break;
