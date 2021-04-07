@@ -1,5 +1,5 @@
 .RetroCard {
-  background-color:  #962cdd;
+  /* background-color:  #962cdd; */
   margin-top:5px;
   padding: 5px;
 }
@@ -38,4 +38,16 @@
 
 .textboxButton:hover {
   opacity: .5;
+}
+
+.greenCard {
+  background-color: #019588;
+}
+
+.pinkCard {
+ background-color: #d11181;
+}
+
+.purpleCard {
+ background-color: #962cdd;
 }

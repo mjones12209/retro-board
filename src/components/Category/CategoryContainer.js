@@ -2,6 +2,7 @@ import { Card } from "react-bootstrap";
 import styles from "./CategoryContainer.module.css";
 import CategoryContainerControls from "./CategoryContainerControls";
 import RetroCard from "../RetroCard/RetroCard";
+import { Droppable } from "react-beautiful-dnd";
 
 const CategoryContainer = () => {
   const { addItem, state } = CategoryContainerControls();
@@ -17,13 +18,29 @@ const CategoryContainer = () => {
           >
             +
           </button>
-          {state.wentWell &&
-            state.wentWell.map((_, index) => {
-              return (
-                <RetroCard identify={index} category="wentWell" key={"wentWell-" + index} backGround="#019588">
-                </RetroCard>
-              );
-            })}
+          <Droppable droppableId={state.wentWell.columnId}>
+            {(provided) => (
+              <div
+                className={styles["wentWellColum"]}
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
+                {state.wentWell.data &&
+                  state.wentWell.data.map((_, index) => {
+                    return (
+                      <RetroCard
+                        key={"wentWell" + index}
+                        identify={index}
+                        category="wentWell"
+                        backGround="greenCard"
+                      ></RetroCard>
+                    );
+                  })}
+
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
         </div>
         <div className={styles["RetroCategory"]}>
           <h2>To Improve</h2>
@@ -33,17 +50,29 @@ const CategoryContainer = () => {
           >
             +
           </button>
-          {state.toImprove &&
-            state.toImprove.map((_, index) => {
-              return (
-                <RetroCard
-                  identify={index}
-                  category="toImprove"
-                  key={"toImprove-" + index}
-                  backGround="#d11181"
-                ></RetroCard>
-              );
-            })}
+          <Droppable droppableId={state.toImprove.columnId}>
+            {(provided) => (
+              <div
+                className={styles["toImproveColumn"]}
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
+                {state.toImprove &&
+                  state.toImprove.data.map((_, index) => {
+                    return (
+                      <RetroCard
+                        identify={index}
+                        category="toImprove"
+                        key={"toImprove-" + index}
+                        backGround="pinkCard"
+                      ></RetroCard>
+                    );
+                  })}
+
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
         </div>
         <div className={styles["RetroCategory"]}>
           <h2>Action Items</h2>
@@ -53,17 +82,31 @@ const CategoryContainer = () => {
           >
             +
           </button>
-          {state.actionItems &&
-            state.actionItems.map((_, index) => {
-              return (
-                <RetroCard
-                  identify={index}
-                  category="actionItems"
-                  key={"actionItem-" + index}
-                  backGround="#962cdd"
-                ></RetroCard>
-              );
-            })}
+          <Droppable
+            droppableId={state.actionItems.columnId}
+          >
+            {(provided) => (
+              <div
+                className={styles["actionItemsColumn"]}
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
+                {state.actionItems &&
+                  state.actionItems.data.map((_, index) => {
+                    return (
+                      <RetroCard
+                        identify={index}
+                        category="actionItems"
+                        key={"actionItem-" + index}
+                        backGround="purpleCard"
+                      ></RetroCard>
+                    );
+                  })}
+
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
         </div>
       </Card.Body>
     </Card>

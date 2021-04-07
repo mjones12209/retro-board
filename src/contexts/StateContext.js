@@ -4,9 +4,9 @@ export const StateContext = createContext();
 
 const StateContextProvider = ({children}) => {
   const [state, setState] = useState({
-    wentWell: [],
-    toImprove: [],
-    actionItems: [],
+    wentWell: {columnId: "wentWell", data: []},
+    toImprove: {columnId: "toImprove", data: []},
+    actionItems: {columnId: "actionItems", data: []},
   });
 
   return (

@@ -9,9 +9,9 @@ const CategoryContainerControls = () => {
     event.preventDefault();
       setState({
         ...state,
-        [category]: [
-          ...state[category].concat({textValue: ""}),
-        ],
+        [category]: {...state[category], data: [
+          ...state[category].data.concat({textValue: ""}),
+        ]},
       });
   };
 

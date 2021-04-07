@@ -1,17 +1,22 @@
-import Title from './components/Title/Title';
-import ToolBar from './components/ToolBar/ToolBar';
-import CategoryContainer from './components/Category/CategoryContainer';
-import StateContextProvder from "./contexts/StateContext";
+import Title from "./components/Title/Title";
+import ToolBar from "./components/ToolBar/ToolBar";
+import CategoryContainer from "./components/Category/CategoryContainer";
+import { DragDropContext } from "react-beautiful-dnd";
+import AppControls from './AppControls';
+
 
 function App() {
+
+  const {onDragEnd} = AppControls();
+  
   return (
     <>
-      <Title>
-        <ToolBar />
-        <StateContextProvder>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Title>
+          <ToolBar />
           <CategoryContainer />
-        </StateContextProvder>
-      </Title>
+        </Title>
+      </DragDropContext>
     </>
   );
 }
