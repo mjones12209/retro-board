@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { StateContext } from "../../contexts/StateContext";
+import DomPurify from 'dompurify';
 
 const RetroCardControls = () => {
   const { state, setState } = useContext(StateContext);
@@ -9,7 +10,7 @@ const RetroCardControls = () => {
       ...state,
       [category]: {...state[category], data: [
         ...state[category].data.slice(0, cardIndex),
-        { textValue: e.target.value },
+        { textValue: DomPurify.sanitize(e.target.value) },
         ...state[category].data.slice(cardIndex + 1),
       ]},
     });
