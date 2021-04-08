@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react';
 
 const ToolBar = () => {
 
-    const [width, setWidth] = useState();
+    const [width, setWidth] = useState(window.innerWidth);
 
     useEffect(()=> {
       const handleResize = () => {
@@ -22,6 +22,7 @@ const ToolBar = () => {
         </span>
 
         <Button variant="light">
+          {console.log(width)}
           {width > 600 ? "Column": "Row"}
         </Button>
       </div>
