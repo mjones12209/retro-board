@@ -1,18 +1,41 @@
 import { useContext } from "react";
 import { StateContext } from "../../contexts/StateContext";
-import DomPurify from 'dompurify';
+import DomPurify from "dompurify";
 
 const RetroCardControls = () => {
   const { state, setState } = useContext(StateContext);
 
+  const incrementLikes = (type, category, cardIndex) => {
+    setState({
+      ...state,
+      [category]: {
+        ...state[category],
+        data: [
+          ...state[category].data.slice(0, cardIndex),
+          {
+            ...state[category].data[cardIndex],
+            [type]: state[category].data[cardIndex][type] + 1,
+          },
+          ...state[category].data.slice(cardIndex + 1),
+        ],
+      },
+    });
+  };
+
   const updateItem = (e, category, cardIndex) => {
     setState({
       ...state,
-      [category]: {...state[category], data: [
-        ...state[category].data.slice(0, cardIndex),
-        { textValue: DomPurify.sanitize(e.target.value) },
-        ...state[category].data.slice(cardIndex + 1),
-      ]},
+      [category]: {
+        ...state[category],
+        data: [
+          ...state[category].data.slice(0, cardIndex),
+          {
+            ...state[category].data[cardIndex],
+            textValue: DomPurify.sanitize(e.target.value),
+          },
+          ...state[category].data.slice(cardIndex + 1),
+        ],
+      },
     });
   };
 
@@ -23,19 +46,31 @@ const RetroCardControls = () => {
       case "toImprove":
         setState({
           ...state,
-          wentWell: {...state.wentWell, data: [...state.wentWell.data, state[category].data[cardIndex]]},
-          [category]: {...state[category], data: [
-            ...state[category].data.filter((_, index) => index !== cardIndex),
-          ]},
+          wentWell: {
+            ...state.wentWell,
+            data: [...state.wentWell.data, state[category].data[cardIndex]],
+          },
+          [category]: {
+            ...state[category],
+            data: [
+              ...state[category].data.filter((_, index) => index !== cardIndex),
+            ],
+          },
         });
         break;
       case "actionItems":
         setState({
           ...state,
-          toImprove: {...state.toImprove, data: [...state.toImprove.data, state[category].data[cardIndex]]},
-          [category]: {...state[category], data: [
-            ...state[category].data.filter((_, index) => index !== cardIndex),
-          ]},
+          toImprove: {
+            ...state.toImprove,
+            data: [...state.toImprove.data, state[category].data[cardIndex]],
+          },
+          [category]: {
+            ...state[category],
+            data: [
+              ...state[category].data.filter((_, index) => index !== cardIndex),
+            ],
+          },
         });
         break;
       default:
@@ -48,22 +83,31 @@ const RetroCardControls = () => {
       case "wentWell":
         setState({
           ...state,
-          toImprove: {...state.toImprove, data: [...state.toImprove.data, state[category].data[cardIndex]]},
-          [category]: {...state[category].data, data: [
-            ...state[category].data.filter((_, index) => index !== cardIndex),
-          ]},
+          toImprove: {
+            ...state.toImprove,
+            data: [...state.toImprove.data, state[category].data[cardIndex]],
+          },
+          [category]: {
+            ...state[category].data,
+            data: [
+              ...state[category].data.filter((_, index) => index !== cardIndex),
+            ],
+          },
         });
         break;
       case "toImprove":
         setState({
           ...state,
-          actionItems: {...state.actionItems, data:[
-            ...state.actionItems.data,
-            state[category].data[cardIndex],
-          ]},
-          [category]: {...state[category], data: [
-            ...state[category].data.filter((_, index) => index !== cardIndex),
-          ]},
+          actionItems: {
+            ...state.actionItems,
+            data: [...state.actionItems.data, state[category].data[cardIndex]],
+          },
+          [category]: {
+            ...state[category],
+            data: [
+              ...state[category].data.filter((_, index) => index !== cardIndex),
+            ],
+          },
         });
         break;
       case "actionItems":
@@ -76,7 +120,10 @@ const RetroCardControls = () => {
   const deleteItem = (category, cardIndex) => {
     setState({
       ...state,
-      [category]: state[category].data.filter((_, index) => index !== cardIndex),
+      [category]: {
+        ...state[category],
+        data: state[category].data.filter((_, index) => index !== cardIndex),
+      },
     });
   };
 
@@ -88,6 +135,7 @@ const RetroCardControls = () => {
     dragItem,
     deleteItem,
     updateItem,
+    incrementLikes,
   };
 };
 

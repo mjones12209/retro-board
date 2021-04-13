@@ -1,29 +1,27 @@
 import {Button} from 'react-bootstrap';
-import styles from './ToolBar.module.css';
-import {useState, useEffect} from 'react';
+import { useEffect } from 'react';
+import ToolBarControls from './ToolBarControls';
+import styles from "./ToolBar.module.css";
+
 
 const ToolBar = () => {
 
-    const [width, setWidth] = useState(window.innerWidth);
-
+    const {width, handleResize} = ToolBarControls();
+    
     useEffect(()=> {
-      const handleResize = () => {
-        setWidth(window.innerWidth)
-      }
       window.addEventListener("resize", handleResize);
       return () =>
         window.removeEventListener("resize", handleResize);
-    }, [])
+    })
 
     return (
-      <div id={styles["toolBar"]}>
+      <div id={styles['toolBar']}>
         <span className="mx-2">
           <strong>Layout:</strong>
         </span>
 
-        <Button variant="light">
-          {console.log(width)}
-          {width > 600 ? "Column": "Row"}
+        <Button variant="light" >
+          {width > 600 ? "Row" : "Column"}
         </Button>
       </div>
     );

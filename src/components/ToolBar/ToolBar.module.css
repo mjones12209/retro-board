@@ -5,6 +5,7 @@
   #toolBar button {
     margin-right: 5px;
     border: 1px solid black;
+    cursor: unset;
   }
 }
 
@@ -12,5 +13,6 @@
   #toolBar button {
     margin-right: 5px;
     border: 1px solid black;
+    cursor: unset;
   }
 }

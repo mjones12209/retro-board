@@ -3,9 +3,12 @@ import styles from "./RetroCard.module.css";
 import RetroCardControls from "./RetroCardControls";
 import { StateContext } from "../../contexts/StateContext";
 import { Draggable } from "react-beautiful-dnd";
+import {InlineIcon} from '@iconify/react';
+import thumbsUpSharp from "@iconify-icons/ion/thumbs-up-sharp";
+import thumbsDownSharp from "@iconify-icons/ion/thumbs-down-sharp";
 
 const RetroCard = ({ backGround, category, identify }) => {
-  const { updateItem, deleteItem, moveLeft, moveRight } = RetroCardControls();
+  const { updateItem, deleteItem, moveLeft, moveRight, incrementLikes} = RetroCardControls();
   const { state } = useContext(StateContext);
 
   return (
@@ -38,10 +41,22 @@ const RetroCard = ({ backGround, category, identify }) => {
                 &lt;
               </button>
               <button
+                onClick={() => incrementLikes("likes", category, identify)}
+              >
+                <InlineIcon icon={thumbsUpSharp} />
+                <span>{state[category].data[identify].likes}</span>
+              </button>
+              <button
                 className={styles["textboxButton"]}
                 onClick={() => deleteItem(category, identify)}
               >
                 {"x"}
+              </button>
+              <button
+                onClick={() => incrementLikes("dislikes", category, identify)}
+              >
+                <InlineIcon icon={thumbsDownSharp} />
+                <span>{state[category].data[identify].dislikes}</span>
               </button>
               <button
                 className={styles["textboxButton"]}
