@@ -1,6 +1,6 @@
 @media only screen and (max-width: 600px) {
   #toolBar {
-      text-align: center;
+    text-align: center;
   }
   #toolBar button {
     margin-right: 5px;

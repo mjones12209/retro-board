@@ -3,21 +3,27 @@ import styles from "./RetroCard.module.css";
 import RetroCardControls from "./RetroCardControls";
 import { StateContext } from "../../contexts/StateContext";
 import { Draggable } from "react-beautiful-dnd";
-import {InlineIcon} from '@iconify/react';
+import { InlineIcon } from "@iconify/react";
 import thumbsUpSharp from "@iconify-icons/ion/thumbs-up-sharp";
 import thumbsDownSharp from "@iconify-icons/ion/thumbs-down-sharp";
-import autosize from 'autosize';
+import autosize from "autosize";
 
 const RetroCard = ({ backGround, category, identify }) => {
-  const { updateItem, deleteItem, moveLeft, moveRight, incrementLikes} = RetroCardControls();
+  const {
+    updateItem,
+    deleteItem,
+    moveLeft,
+    moveRight,
+    incrementLikes,
+  } = RetroCardControls();
   const { state } = useContext(StateContext);
 
   let textarea;
 
-  useEffect(()=> {
-    textarea.focus();;
-    autosize(textarea)
-  }, [textarea]) 
+  useEffect(() => {
+    textarea.focus();
+    autosize(textarea);
+  }, [textarea]);
 
   return (
     <>
@@ -33,15 +39,20 @@ const RetroCard = ({ backGround, category, identify }) => {
             {...provided.draggableProps}
             {...provided.dragHandleProps}
           >
-            <textarea
-              required={true}
-              ref={c => (textarea = c)}
-              value={state[category].data[identify].textValue}
-              className={styles["textbox"]}
-              onChange={(e) => {
-                updateItem(e, category, identify);
-              }}
-            />
+            <form>
+              <textarea
+                required={true}
+                name="noteData"
+                ref={(c) => {
+                  textarea = c;
+                }}
+                value={state[category].data[identify].textValue}
+                className={styles["textbox"]}
+                onChange={(e) => {
+                  updateItem(e, category, identify);
+                }}
+              />
+            </form>
             <div className={styles["buttonContainer"]}>
               <button
                 className={styles["textboxButton"]}

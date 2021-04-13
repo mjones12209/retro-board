@@ -40,24 +40,23 @@
     display: flex;
     margin-top: 10px;
   }
-  
+
   #categoryContainer > div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
-  
+
   .button {
     width: 100%;
     border: none;
   }
-  
+
   .RetroCategory {
     width: 32%;
   }
-  
+
   .button:hover {
     background-color: #ddd;
   }
 }
-

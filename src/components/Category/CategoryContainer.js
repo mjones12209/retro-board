@@ -82,9 +82,7 @@ const CategoryContainer = () => {
           >
             +
           </button>
-          <Droppable
-            droppableId={state.actionItems.columnId}
-          >
+          <Droppable droppableId={state.actionItems.columnId}>
             {(provided) => (
               <div
                 className={styles["actionItemsColumn"]}

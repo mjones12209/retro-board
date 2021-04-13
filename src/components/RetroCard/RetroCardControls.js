@@ -88,7 +88,7 @@ const RetroCardControls = () => {
             data: [...state.toImprove.data, state[category].data[cardIndex]],
           },
           [category]: {
-            ...state[category].data,
+            ...state[category],
             data: [
               ...state[category].data.filter((_, index) => index !== cardIndex),
             ],
