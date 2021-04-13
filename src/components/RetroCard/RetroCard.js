@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect } from "react";
 import styles from "./RetroCard.module.css";
 import RetroCardControls from "./RetroCardControls";
 import { StateContext } from "../../contexts/StateContext";
