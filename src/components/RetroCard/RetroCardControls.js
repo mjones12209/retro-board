@@ -127,6 +127,23 @@ const RetroCardControls = () => {
     });
   };
 
+  const setError = (e, category, cardIndex, errorText) => {
+    setState({
+      ...state,
+      [category]: {
+        ...state[category],
+        data: [
+          ...state[category].data.slice(0, cardIndex),
+          {
+            ...state[category].data[cardIndex],
+            error: errorText,
+          },
+          ...state[category].data.slice(cardIndex + 1),
+        ],
+      },
+    });
+  }
+
   const dragItem = () => {};
 
   return {
@@ -136,6 +153,7 @@ const RetroCardControls = () => {
     deleteItem,
     updateItem,
     incrementLikes,
+    setError
   };
 };
 

@@ -51,3 +51,9 @@
 .purpleCard {
   background-color: #962cdd;
 }
+
+
+.error {
+  color: white;
+  text-align: center;
+}

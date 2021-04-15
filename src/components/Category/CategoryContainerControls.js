@@ -15,6 +15,7 @@ const CategoryContainerControls = () => {
             textValue: "",
             likes: 0,
             dislikes: 0,
+            error: ''
           }),
         ],
       },

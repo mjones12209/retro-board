@@ -15,6 +15,7 @@ const RetroCard = ({ backGround, category, identify }) => {
     moveLeft,
     moveRight,
     incrementLikes,
+    setError,
   } = RetroCardControls();
   const { state } = useContext(StateContext);
 
@@ -39,7 +40,9 @@ const RetroCard = ({ backGround, category, identify }) => {
             {...provided.draggableProps}
             {...provided.dragHandleProps}
           >
-            <form>
+              <h4 className={styles["error"]}>
+                {state[category].data[identify].error}
+              </h4>
               <textarea
                 required={true}
                 name="noteData"
@@ -51,8 +54,12 @@ const RetroCard = ({ backGround, category, identify }) => {
                 onChange={(e) => {
                   updateItem(e, category, identify);
                 }}
+                onBlur={(e) => {
+                  e.target.value.trim() === ""
+                    ? setError(e, category, identify, "Please enter text.")
+                    : setError(e, category, identify, "");
+                }}
               />
-            </form>
             <div className={styles["buttonContainer"]}>
               <button
                 className={styles["textboxButton"]}
